@@ -1,0 +1,1002 @@
+[
+  {
+    "user_id": "u0001",
+    "persona_type": "social_diner",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0002",
+    "persona_type": "social_diner",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0003",
+    "persona_type": "value_hunter",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0004",
+    "persona_type": "social_diner",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0005",
+    "persona_type": "purist",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0006",
+    "persona_type": "social_diner",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0007",
+    "persona_type": "social_diner",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0008",
+    "persona_type": "purist",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0009",
+    "persona_type": "value_hunter",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0010",
+    "persona_type": "social_diner",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0011",
+    "persona_type": "purist",
+    "review_count": 11
+  },
+  {
+    "user_id": "u0012",
+    "persona_type": "social_diner",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0013",
+    "persona_type": "value_hunter",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0014",
+    "persona_type": "social_diner",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0015",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0016",
+    "persona_type": "purist",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0017",
+    "persona_type": "value_hunter",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0018",
+    "persona_type": "value_hunter",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0019",
+    "persona_type": "value_hunter",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0020",
+    "persona_type": "social_diner",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0021",
+    "persona_type": "purist",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0022",
+    "persona_type": "value_hunter",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0023",
+    "persona_type": "value_hunter",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0024",
+    "persona_type": "social_diner",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0025",
+    "persona_type": "social_diner",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0026",
+    "persona_type": "value_hunter",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0027",
+    "persona_type": "purist",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0028",
+    "persona_type": "value_hunter",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0029",
+    "persona_type": "value_hunter",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0030",
+    "persona_type": "value_hunter",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0031",
+    "persona_type": "social_diner",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0032",
+    "persona_type": "purist",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0033",
+    "persona_type": "social_diner",
+    "review_count": 11
+  },
+  {
+    "user_id": "u0034",
+    "persona_type": "social_diner",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0035",
+    "persona_type": "purist",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0036",
+    "persona_type": "purist",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0037",
+    "persona_type": "value_hunter",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0038",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0039",
+    "persona_type": "purist",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0040",
+    "persona_type": "purist",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0041",
+    "persona_type": "value_hunter",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0042",
+    "persona_type": "social_diner",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0043",
+    "persona_type": "purist",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0044",
+    "persona_type": "value_hunter",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0045",
+    "persona_type": "value_hunter",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0046",
+    "persona_type": "purist",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0047",
+    "persona_type": "value_hunter",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0048",
+    "persona_type": "value_hunter",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0049",
+    "persona_type": "social_diner",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0050",
+    "persona_type": "purist",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0051",
+    "persona_type": "value_hunter",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0052",
+    "persona_type": "social_diner",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0053",
+    "persona_type": "purist",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0054",
+    "persona_type": "purist",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0055",
+    "persona_type": "purist",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0056",
+    "persona_type": "social_diner",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0057",
+    "persona_type": "value_hunter",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0058",
+    "persona_type": "social_diner",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0059",
+    "persona_type": "value_hunter",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0060",
+    "persona_type": "purist",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0061",
+    "persona_type": "value_hunter",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0062",
+    "persona_type": "purist",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0063",
+    "persona_type": "purist",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0064",
+    "persona_type": "social_diner",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0065",
+    "persona_type": "social_diner",
+    "review_count": 11
+  },
+  {
+    "user_id": "u0066",
+    "persona_type": "value_hunter",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0067",
+    "persona_type": "social_diner",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0068",
+    "persona_type": "purist",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0069",
+    "persona_type": "value_hunter",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0070",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0071",
+    "persona_type": "value_hunter",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0072",
+    "persona_type": "value_hunter",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0073",
+    "persona_type": "social_diner",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0074",
+    "persona_type": "purist",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0075",
+    "persona_type": "value_hunter",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0076",
+    "persona_type": "purist",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0077",
+    "persona_type": "social_diner",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0078",
+    "persona_type": "value_hunter",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0079",
+    "persona_type": "social_diner",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0080",
+    "persona_type": "value_hunter",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0081",
+    "persona_type": "social_diner",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0082",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0083",
+    "persona_type": "value_hunter",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0084",
+    "persona_type": "purist",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0085",
+    "persona_type": "value_hunter",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0086",
+    "persona_type": "social_diner",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0087",
+    "persona_type": "social_diner",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0088",
+    "persona_type": "purist",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0089",
+    "persona_type": "purist",
+    "review_count": 11
+  },
+  {
+    "user_id": "u0090",
+    "persona_type": "purist",
+    "review_count": 11
+  },
+  {
+    "user_id": "u0091",
+    "persona_type": "social_diner",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0092",
+    "persona_type": "purist",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0093",
+    "persona_type": "social_diner",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0094",
+    "persona_type": "value_hunter",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0095",
+    "persona_type": "social_diner",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0096",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0097",
+    "persona_type": "purist",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0098",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0099",
+    "persona_type": "value_hunter",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0100",
+    "persona_type": "social_diner",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0101",
+    "persona_type": "purist",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0102",
+    "persona_type": "value_hunter",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0103",
+    "persona_type": "social_diner",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0104",
+    "persona_type": "purist",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0105",
+    "persona_type": "purist",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0106",
+    "persona_type": "social_diner",
+    "review_count": 11
+  },
+  {
+    "user_id": "u0107",
+    "persona_type": "social_diner",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0108",
+    "persona_type": "social_diner",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0109",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0110",
+    "persona_type": "value_hunter",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0111",
+    "persona_type": "purist",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0112",
+    "persona_type": "value_hunter",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0113",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0114",
+    "persona_type": "social_diner",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0115",
+    "persona_type": "value_hunter",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0116",
+    "persona_type": "social_diner",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0117",
+    "persona_type": "purist",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0118",
+    "persona_type": "value_hunter",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0119",
+    "persona_type": "value_hunter",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0120",
+    "persona_type": "purist",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0121",
+    "persona_type": "social_diner",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0122",
+    "persona_type": "value_hunter",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0123",
+    "persona_type": "value_hunter",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0124",
+    "persona_type": "purist",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0125",
+    "persona_type": "value_hunter",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0126",
+    "persona_type": "purist",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0127",
+    "persona_type": "social_diner",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0128",
+    "persona_type": "social_diner",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0129",
+    "persona_type": "social_diner",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0130",
+    "persona_type": "purist",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0131",
+    "persona_type": "purist",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0132",
+    "persona_type": "social_diner",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0133",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0134",
+    "persona_type": "social_diner",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0135",
+    "persona_type": "purist",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0136",
+    "persona_type": "purist",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0137",
+    "persona_type": "value_hunter",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0138",
+    "persona_type": "purist",
+    "review_count": 11
+  },
+  {
+    "user_id": "u0139",
+    "persona_type": "purist",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0140",
+    "persona_type": "social_diner",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0141",
+    "persona_type": "purist",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0142",
+    "persona_type": "purist",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0143",
+    "persona_type": "value_hunter",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0144",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0145",
+    "persona_type": "purist",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0146",
+    "persona_type": "purist",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0147",
+    "persona_type": "value_hunter",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0148",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0149",
+    "persona_type": "social_diner",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0150",
+    "persona_type": "social_diner",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0151",
+    "persona_type": "value_hunter",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0152",
+    "persona_type": "value_hunter",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0153",
+    "persona_type": "purist",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0154",
+    "persona_type": "social_diner",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0155",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0156",
+    "persona_type": "value_hunter",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0157",
+    "persona_type": "social_diner",
+    "review_count": 11
+  },
+  {
+    "user_id": "u0158",
+    "persona_type": "value_hunter",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0159",
+    "persona_type": "social_diner",
+    "review_count": 11
+  },
+  {
+    "user_id": "u0160",
+    "persona_type": "social_diner",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0161",
+    "persona_type": "purist",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0162",
+    "persona_type": "purist",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0163",
+    "persona_type": "value_hunter",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0164",
+    "persona_type": "value_hunter",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0165",
+    "persona_type": "purist",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0166",
+    "persona_type": "value_hunter",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0167",
+    "persona_type": "social_diner",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0168",
+    "persona_type": "social_diner",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0169",
+    "persona_type": "value_hunter",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0170",
+    "persona_type": "purist",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0171",
+    "persona_type": "value_hunter",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0172",
+    "persona_type": "purist",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0173",
+    "persona_type": "value_hunter",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0174",
+    "persona_type": "value_hunter",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0175",
+    "persona_type": "value_hunter",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0176",
+    "persona_type": "purist",
+    "review_count": 11
+  },
+  {
+    "user_id": "u0177",
+    "persona_type": "value_hunter",
+    "review_count": 11
+  },
+  {
+    "user_id": "u0178",
+    "persona_type": "value_hunter",
+    "review_count": 10
+  },
+  {
+    "user_id": "u0179",
+    "persona_type": "purist",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0180",
+    "persona_type": "value_hunter",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0181",
+    "persona_type": "purist",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0182",
+    "persona_type": "purist",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0183",
+    "persona_type": "social_diner",
+    "review_count": 9
+  },
+  {
+    "user_id": "u0184",
+    "persona_type": "purist",
+    "review_count": 12
+  },
+  {
+    "user_id": "u0185",
+    "persona_type": "value_hunter",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0186",
+    "persona_type": "value_hunter",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0187",
+    "persona_type": "social_diner",
+    "review_count": 5
+  },
+  {
+    "user_id": "u0188",
+    "persona_type": "value_hunter",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0189",
+    "persona_type": "social_diner",
+    "review_count": 14
+  },
+  {
+    "user_id": "u0190",
+    "persona_type": "purist",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0191",
+    "persona_type": "purist",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0192",
+    "persona_type": "social_diner",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0193",
+    "persona_type": "social_diner",
+    "review_count": 13
+  },
+  {
+    "user_id": "u0194",
+    "persona_type": "social_diner",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0195",
+    "persona_type": "value_hunter",
+    "review_count": 7
+  },
+  {
+    "user_id": "u0196",
+    "persona_type": "value_hunter",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0197",
+    "persona_type": "purist",
+    "review_count": 15
+  },
+  {
+    "user_id": "u0198",
+    "persona_type": "value_hunter",
+    "review_count": 8
+  },
+  {
+    "user_id": "u0199",
+    "persona_type": "purist",
+    "review_count": 6
+  },
+  {
+    "user_id": "u0200",
+    "persona_type": "value_hunter",
+    "review_count": 5
+  }
+]

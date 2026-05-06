@@ -1,0 +1,122 @@
+[
+  {
+    "business_id": "b001",
+    "name": "Mama Cass Restaurant",
+    "category": "Nigerian/Buka",
+    "city": "Lagos",
+    "stars": 4.2,
+    "price": "\u20a61,500-\u20a64,000"
+  },
+  {
+    "business_id": "b002",
+    "name": "Chicken Republic Lekki",
+    "category": "Fast Food",
+    "city": "Lagos",
+    "stars": 3.1,
+    "price": "\u20a61,500-\u20a64,000"
+  },
+  {
+    "business_id": "b003",
+    "name": "Terra Kulture VI",
+    "category": "Cultural Dining",
+    "city": "Lagos",
+    "stars": 4.5,
+    "price": "\u20a65,000-\u20a615,000"
+  },
+  {
+    "business_id": "b004",
+    "name": "Nkoyo Restaurant",
+    "category": "Niger Delta Cuisine",
+    "city": "Lagos",
+    "stars": 4.7,
+    "price": "\u20a63,000-\u20a68,000"
+  },
+  {
+    "business_id": "b005",
+    "name": "Yellow Chilli Ikeja",
+    "category": "Contemporary Nigerian",
+    "city": "Lagos",
+    "stars": 4.3,
+    "price": "\u20a68,000-\u20a620,000"
+  },
+  {
+    "business_id": "b006",
+    "name": "Buka Hut Mainland",
+    "category": "Street Food/Buka",
+    "city": "Lagos",
+    "stars": 4.0,
+    "price": "\u20a6800-\u20a62,500"
+  },
+  {
+    "business_id": "b007",
+    "name": "Craft Grill VI",
+    "category": "Continental",
+    "city": "Lagos",
+    "stars": 4.1,
+    "price": "\u20a615,000-\u20a640,000"
+  },
+  {
+    "business_id": "b008",
+    "name": "Cafe Neo Ikoyi",
+    "category": "Cafe/Brunch",
+    "city": "Lagos",
+    "stars": 4.4,
+    "price": "\u20a63,000-\u20a610,000"
+  },
+  {
+    "business_id": "b009",
+    "name": "KFC Ikeja City Mall",
+    "category": "Fast Food",
+    "city": "Lagos",
+    "stars": 3.0,
+    "price": "\u20a62,000-\u20a65,000"
+  },
+  {
+    "business_id": "b010",
+    "name": "Okrika Mama Kitchen",
+    "category": "Homestyle Nigerian",
+    "city": "Lagos",
+    "stars": 4.6,
+    "price": "\u20a62,000-\u20a65,000"
+  },
+  {
+    "business_id": "b011",
+    "name": "The Place Restaurant",
+    "category": "Nigerian Casual",
+    "city": "Lagos",
+    "stars": 3.8,
+    "price": "\u20a62,500-\u20a66,000"
+  },
+  {
+    "business_id": "b012",
+    "name": "Suya Spot Surulere",
+    "category": "Street Food",
+    "city": "Lagos",
+    "stars": 4.5,
+    "price": "\u20a6500-\u20a62,000"
+  },
+  {
+    "business_id": "b013",
+    "name": "Dominos Pizza VI",
+    "category": "Fast Food/Pizza",
+    "city": "Lagos",
+    "stars": 3.2,
+    "price": "\u20a63,000-\u20a68,000"
+  },
+  {
+    "business_id": "b014",
+    "name": "Tantalizers Yaba",
+    "category": "Fast Food Nigerian",
+    "city": "Lagos",
+    "stars": 3.5,
+    "price": "\u20a61,000-\u20a63,500"
+  },
+  {
+    "business_id": "b015",
+    "name": "Hilda's Kitchen Lekki",
+    "category": "Fine Dining Nigerian",
+    "city": "Lagos",
+    "stars": 4.8,
+    "price": "\u20a610,000-\u20a625,000"
+  }
+]
