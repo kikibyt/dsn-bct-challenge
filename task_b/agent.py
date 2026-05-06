@@ -126,8 +126,42 @@ PRODUCT_CATALOGUE = load_catalogue()
 
 def recommend(user_history: list[dict], context: dict = None) -> dict:
     """
-    Given user history and optional context,
-    return personalised ranked recommendations.
+    TASK B — Recommendation Agent
+    
+    Delivers personalised ranked recommendations using persona-driven reasoning.
+    Goes beyond collaborative filtering by explaining WHY each item fits
+    this specific user — not just what similar users liked.
+    
+    Agentic workflow:
+      Step 1: Extract behavioural persona from review history
+      Step 2: Load product catalogue from dataset (with fallback)
+      Step 3: Build context string from occasion/location/budget/mood
+      Step 4: Prompt LLM to reason and rank — not just retrieve
+      Step 5: Parse structured output into ranked recommendation list
+    
+    Cold-start handling: When history is sparse (1-2 reviews), the persona
+    engine still produces a partial profile. Context signals (occasion, mood,
+    budget) are weighted more heavily to compensate for limited history.
+    
+    Cross-domain: The catalogue is category-agnostic. A user with only
+    restaurant history can receive cafe, street food, or fine dining
+    recommendations based on inferred taste preferences.
+    
+    Multi-turn: Each call is stateless but context-aware. The same user
+    with different context inputs receives different rankings — demonstrated
+    in cold_start_demo.py Scenario 4.
+    
+    Nigerian contextualisation: Pitches are generated in Nigerian English
+    and recommendations account for Lagos-specific factors including
+    location zones (Island vs Mainland), Naira price sensitivity,
+    and cultural food preferences.
+    
+    Args:
+        user_history: List of past reviews with business, rating, review keys
+        context: Optional dict with occasion, location, budget, mood keys
+    
+    Returns:
+        Dict with user_persona, context, recommendations (ranked list)
     """
 
     # Step 1: Build persona

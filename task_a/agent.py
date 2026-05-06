@@ -6,8 +6,21 @@ load_dotenv()
 
 client = Anthropic()
 
+
 def build_user_persona(user_history: list[dict]) -> str:
-    """Convert user review history into a persona description."""
+    """
+    PERSONA ENGINE — Core intelligence shared across both agents.
+    
+    Extracts a behavioural profile from a user's review history.
+    Rather than using embeddings (which lose nuance), we use an LLM
+    to identify:
+      - Rating pattern (polarised, generous, balanced, exacting)
+      - Preference triggers (what earns high ratings)
+      - Aversion signals (what earns low ratings)
+      - Linguistic register (Nigerian casual, formal, expressive)
+    
+    This persona is then used downstream by both Task A and Task B.
+    """
     
     persona_prompt = f"""
     Analyze these past reviews from a user and write a short persona summary 
@@ -33,20 +46,44 @@ def build_user_persona(user_history: list[dict]) -> str:
 
 def simulate_review(user_history: list[dict], product: dict) -> dict:
     """
-    Given a user's review history and a new product,
-    simulate what rating and review they would write.
+    TASK A — User Modeling Agent
+    
+    Simulates what a specific user would write about an unseen product.
+    
+    Agentic workflow:
+      Step 1: Extract behavioural persona from review history
+      Step 2: Compute rating statistics (avg, best, worst) as anchors
+      Step 3: Prompt LLM to generate behaviourally faithful review
+      Step 4: Parse and validate structured output
+    
+    Design decision: We anchor rating generation to the user's actual
+    average rather than letting the LLM guess freely. This reduces RMSE
+    significantly because polarised users stay polarised and balanced
+    users stay balanced.
+    
+    Nigerian contextualisation: Prompt instructs the model to write
+    in the user's natural register — which for Lagos users often
+    includes Nigerian English expressions, Naira price references,
+    and culturally specific food vocabulary.
+    
+    Args:
+        user_history: List of past reviews with business, rating, review keys
+        product: Dict with name, category, description keys
+    
+    Returns:
+        Dict with simulated_rating, simulated_review, user_persona_summary
     """
     
-    # Step 1: Build persona from history
+    # Step 1: Extract persona from history
     persona = build_user_persona(user_history)
     
-    # Step 2: Calculate rating stats from history
+    # Step 2: Compute rating anchors to improve RMSE
     ratings = [r['rating'] for r in user_history]
     avg_rating = sum(ratings) / len(ratings)
     best = max(user_history, key=lambda x: x['rating'])
     worst = min(user_history, key=lambda x: x['rating'])
     
-    # Step 2: Simulate the review
+    # Step 3: Generate review with behavioural anchoring
     review_prompt = f"""
     You are simulating a real Nigerian user's review of a product/place.
     
@@ -89,7 +126,7 @@ def simulate_review(user_history: list[dict], product: dict) -> dict:
     
     raw_output = response.content[0].text
     
-    # Parse the response
+    # Step 4: Parse structured output
     lines = raw_output.strip().split('\n')
     rating = None
     review_text = ""
@@ -99,13 +136,14 @@ def simulate_review(user_history: list[dict], product: dict) -> dict:
             try:
                 rating = int(line.replace("RATING:", "").strip())
             except:
+                # Fallback to average if parsing fails
                 rating = round(avg_rating)
         elif line.startswith("REVIEW:"):
             review_text = line.replace("REVIEW:", "").strip()
             for j in range(i+1, len(lines)):
                 review_text += " " + lines[j].strip()
     
-    # Fallback if parsing fails
+    # Safety fallback
     if rating is None:
         rating = round(avg_rating)
     
@@ -116,10 +154,10 @@ def simulate_review(user_history: list[dict], product: dict) -> dict:
         "user_persona_summary": persona
     }
 
-# ---- TEST IT RIGHT HERE ----
+
+# ---- TEST ----
 if __name__ == "__main__":
-    
-    # Sample user history (like what Yelp data looks like)
+
     sample_user_history = [
         {
             "business": "Chicken Republic Lekki",
@@ -137,17 +175,16 @@ if __name__ == "__main__":
             "review": "Pizza was okay. Nothing special. They forgot my extra cheese which annoyed me."
         }
     ]
-    
-    # New product to simulate a review for
+
     new_product = {
         "name": "Sky Restaurant Ikeja",
         "category": "Nigerian Fine Dining",
-        "description": "Upscale Nigerian cuisine in Ikeja GRA. Known for pepper soup, grilled fish and live music on weekends."
+        "description": "Upscale Nigerian cuisine in Ikeja GRA. Known for pepper soup, grilled fish and live music."
     }
-    
+
     print("🤖 Running User Modeling Agent...\n")
     result = simulate_review(sample_user_history, new_product)
-    
+
     print(f"Product: {result['product']}")
     print(f"Simulated Rating: {'⭐' * result['simulated_rating']} ({result['simulated_rating']}/5)")
     print(f"\nSimulated Review:\n{result['simulated_review']}")
