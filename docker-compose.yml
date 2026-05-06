@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  task_a:
+    build:
+      context: .
+      dockerfile: task_a/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+
+  task_b:
+    build:
+      context: .
+      dockerfile: task_b/Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
