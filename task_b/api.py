@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 from agent import recommend
@@ -7,6 +8,15 @@ app = FastAPI(
     title="DSN x BCT — Task B: Recommendation Agent",
     description="Give us a user's review history, we'll recommend what they'll love next.",
     version="1.0.0"
+)
+
+# ── CORS — allows frontend to call this API ──
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class PastReview(BaseModel):
@@ -36,7 +46,6 @@ class RecommendResponse(BaseModel):
     context: dict
     recommendations: List[Recommendation]
 
-
 @app.get("/")
 def root():
     return {
@@ -56,9 +65,7 @@ def recommend_endpoint(request: RecommendRequest):
     try:
         user_history = [r.model_dump() for r in request.user_history]
         context = request.context.model_dump() if request.context else None
-        
         result = recommend(user_history, context)
         return result
-    
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

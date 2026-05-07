@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 from agent import simulate_review
@@ -9,7 +10,14 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# ---- Request & Response Models ----
+# ── CORS — allows frontend to call this API ──
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class PastReview(BaseModel):
     business: str
@@ -31,9 +39,6 @@ class SimulateReviewResponse(BaseModel):
     simulated_review: str
     user_persona_summary: str
 
-
-# ---- Endpoints ----
-
 @app.get("/")
 def root():
     return {
@@ -51,12 +56,9 @@ def health():
 @app.post("/simulate-review", response_model=SimulateReviewResponse)
 def simulate_review_endpoint(request: SimulateReviewRequest):
     try:
-        # Convert pydantic models to dicts
         user_history = [r.model_dump() for r in request.user_history]
         product = request.product.model_dump()
-        
         result = simulate_review(user_history, product)
         return result
-    
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
