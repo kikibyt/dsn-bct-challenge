@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ÌMỌ̀ — Nigerian AI Review & Recommendation Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0D0D0D;
+    --paper: #F5F0E8;
+    --gold: #C9972B;
+    --gold-light: #E8C46A;
+    --green: #1A5C3A;
+    --green-light: #2A8C5A;
+    --red: #C0392B;
+    --card: #FDFAF4;
+    --border: #D4C9B0;
+    --muted: #7A6F5E;
+    --radius: 4px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    z-index: 1;
+    border-bottom: 2px solid var(--ink);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    background: var(--ink);
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: -1px;
+  }
+
+  .logo span {
+    color: var(--paper);
+    font-weight: 400;
+    font-size: 13px;
+    margin-left: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    vertical-align: middle;
+  }
+
+  .badge {
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding: 64px 48px 48px;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero-text h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .hero-text h1 em {
+    font-style: italic;
+    color: var(--green);
+    font-weight: 400;
+  }
+
+  .hero-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 440px;
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border: 2px solid var(--ink);
+  }
+
+  .stat {
+    background: var(--card);
+    padding: 24px;
+    border: 1px solid var(--border);
+  }
+
+  .stat:nth-child(1) { background: var(--ink); }
+  .stat:nth-child(1) .stat-value { color: var(--gold); }
+  .stat:nth-child(1) .stat-label { color: var(--paper); opacity: 0.6; }
+
+  .stat-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ── TABS ── */
+  .tabs {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    border-bottom: 2px solid var(--ink);
+    background: var(--paper);
+  }
+
+  .tab {
+    padding: 18px 32px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    border-right: 1px solid var(--border);
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .tab.active {
+    background: var(--ink);
+    color: var(--gold);
+  }
+
+  .tab:hover:not(.active) {
+    background: var(--border);
+    color: var(--ink);
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 240px);
+  }
+
+  .panel {
+    padding: 40px 48px;
+    border-right: 1px solid var(--border);
+  }
+
+  .panel:last-child { border-right: none; }
+
+  .panel-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .panel-title::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  /* ── FORM ELEMENTS ── */
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  textarea, input, select {
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+
+  textarea:focus, input:focus, select:focus {
+    border-color: var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .field { margin-bottom: 20px; }
+
+  /* ── REVIEW CARDS ── */
+  .review-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .review-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    position: relative;
+    animation: slideIn 0.3s ease;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .review-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .review-card input[type="text"] {
+    font-weight: 500;
+    font-size: 13px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    border-bottom: 1px dashed var(--border);
+    border-radius: 0;
+  }
+
+  .star-select {
+    display: flex;
+    gap: 2px;
+  }
+
+  .star {
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--border);
+    transition: color 0.1s;
+  }
+
+  .star.active { color: var(--gold); }
+
+  .review-card textarea {
+    font-size: 13px;
+    min-height: 60px;
+    margin-top: 8px;
+  }
+
+  .remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 16px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .remove-btn:hover { background: #fee; color: var(--red); }
+
+  /* ── BUTTONS ── */
+  .btn-add {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 20px;
+  }
+
+  .btn-add:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+    background: var(--card);
+  }
+
+  .btn-run {
+    width: 100%;
+    padding: 16px;
+    background: var(--ink);
+    color: var(--gold);
+    border: none;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-run:hover {
+    background: var(--green);
+    color: var(--paper);
+  }
+
+  .btn-run:disabled {
+    background: var(--border);
+    color: var(--muted);
+    cursor: not-allowed;
+  }
+
+  .btn-run .spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--gold);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin: 0 auto;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .btn-run.loading .btn-text { display: none; }
+  .btn-run.loading .spinner { display: block; }
+
+  /* ── OUTPUT PANEL ── */
+  .output-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    color: var(--muted);
+    text-align: center;
+    gap: 16px;
+  }
+
+  .output-placeholder .icon {
+    font-size: 48px;
+    opacity: 0.3;
+  }
+
+  .output-placeholder p {
+    font-size: 14px;
+    max-width: 240px;
+    line-height: 1.6;
+  }
+
+  /* ── RESULT COMPONENTS ── */
+  .result-section {
+    animation: fadeUp 0.5s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .persona-box {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 20px;
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    font-size: 13px;
+    line-height: 1.7;
+    font-weight: 300;
+    font-style: italic;
+    position: relative;
+  }
+
+  .persona-box::before {
+    content: 'PERSONA EXTRACTED';
+    display: block;
+    font-style: normal;
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  /* Task A result */
+  .review-result {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    padding: 24px;
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+  }
+
+  .rating-display {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .rating-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .rating-stars { font-size: 22px; }
+
+  .review-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink);
+    font-style: italic;
+    border-left: 3px solid var(--gold);
+    padding-left: 16px;
+  }
+
+  /* Task B results */
+  .rec-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    gap: 16px;
+    align-items: start;
+    transition: border-color 0.2s, transform 0.2s;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .rec-card:hover {
+    border-color: var(--ink);
+    transform: translateX(4px);
+  }
+
+  .rec-card:nth-child(1) { animation-delay: 0.1s; border-left: 3px solid var(--gold); }
+  .rec-card:nth-child(2) { animation-delay: 0.2s; border-left: 3px solid var(--green); }
+  .rec-card:nth-child(3) { animation-delay: 0.3s; border-left: 3px solid var(--muted); }
+  .rec-card:nth-child(4) { animation-delay: 0.4s; }
+  .rec-card:nth-child(5) { animation-delay: 0.5s; }
+
+  .rec-rank {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--border);
+    line-height: 1;
+  }
+
+  .rec-card:nth-child(1) .rec-rank { color: var(--gold); }
+  .rec-card:nth-child(2) .rec-rank { color: var(--green); }
+
+  .rec-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .rec-pitch {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+
+  .rec-why {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+    display: none;
+  }
+
+  .rec-card:hover .rec-why { display: block; }
+
+  .confidence-badge {
+    background: var(--green);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    white-space: nowrap;
+  }
+
+  /* ── ERROR ── */
+  .error-box {
+    background: #FEF2F2;
+    border: 1px solid #FCA5A5;
+    color: var(--red);
+    padding: 16px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* ── CONTEXT GRID ── */
+  .context-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 2px solid var(--ink);
+    background: var(--ink);
+    padding: 16px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: var(--paper);
+    opacity: 0.5;
+  }
+
+  footer a {
+    font-size: 12px;
+    color: var(--gold);
+    text-decoration: none;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 32px 24px; }
+    .main { grid-template-columns: 1fr; }
+    .panel { padding: 32px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+    header { padding: 0 24px; }
+    .context-grid { grid-template-columns: 1fr; }
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: grid; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 900px) {
+    .tab-content.active { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">ÌMỌ̀ <span>DSN × BCT · LLM Agent Challenge</span></div>
+  <div class="badge">🇳🇬 Lagos AI</div>
+</header>
+
+<div class="hero">
+  <div class="hero-text">
+    <h1>Know your user.<br><em>Deeply.</em></h1>
+    <p>ÌMỌ̀ (Yoruba: knowledge) is a dual-agent system that understands Nigerian users — their taste, their tone, and what they'll choose next.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-value">0.50</div>
+      <div class="stat-label">Hit Rate</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">0.28</div>
+      <div class="stat-label">NDCG@10</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">200</div>
+      <div class="stat-label">Test Users</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">1,990</div>
+      <div class="stat-label">Reviews</div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('task-a', this)">Task A — Review Simulation</button>
+  <button class="tab" onclick="switchTab('task-b', this)">Task B — Recommendations</button>
+</div>
+
+<!-- TASK A -->
+<div id="task-a" class="tab-content active">
+  <div class="panel">
+    <div class="panel-title">User History</div>
+
+    <div class="review-cards" id="review-cards-a">
+      <!-- Cards injected by JS -->
+    </div>
+
+    <button class="btn-add" onclick="addReviewCard()">+ Add another review</button>
+
+    <hr class="divider">
+    <div class="panel-title">Product to Review</div>
+
+    <div class="field">
+      <label>Business Name</label>
+      <input type="text" id="product-name" placeholder="e.g. Hilda's Kitchen Lekki" />
+    </div>
+    <div class="field">
+      <label>Category</label>
+      <input type="text" id="product-category" placeholder="e.g. Fine Dining Nigerian" />
+    </div>
+    <div class="field">
+      <label>Description</label>
+      <textarea id="product-desc" rows="3" placeholder="e.g. Upscale Nigerian cuisine. Known for lobster jollof and wagyu suya..."></textarea>
+    </div>
+
+    <button class="btn-run" id="run-a" onclick="runTaskA()">
+      <span class="btn-text">Simulate Review</span>
+      <div class="spinner"></div>
+    </button>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Simulated Output</div>
+    <div id="output-a">
+      <div class="output-placeholder">
+        <div class="icon">✍🏾</div>
+        <p>Add user history and a product, then click Simulate Review</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TASK B -->
+<div id="task-b" class="tab-content">
+  <div class="panel">
+    <div class="panel-title">User History</div>
+
+    <div class="review-cards" id="review-cards-b">
+      <!-- Cards injected by JS -->
+    </div>
+
+    <button class="btn-add" onclick="addReviewCardB()">+ Add another review</button>
+
+    <hr class="divider">
+    <div class="panel-title">Context (Optional)</div>
+
+    <div class="context-grid">
+      <div class="field">
+        <label>Occasion</label>
+        <input type="text" id="ctx-occasion" placeholder="e.g. Date night" />
+      </div>
+      <div class="field">
+        <label>Location</label>
+        <input type="text" id="ctx-location" placeholder="e.g. Victoria Island" />
+      </div>
+      <div class="field">
+        <label>Budget</label>
+        <input type="text" id="ctx-budget" placeholder="e.g. ₦5,000 - ₦15,000" />
+      </div>
+      <div class="field">
+        <label>Mood</label>
+        <input type="text" id="ctx-mood" placeholder="e.g. Want something authentic" />
+      </div>
+    </div>
+
+    <button class="btn-run" id="run-b" onclick="runTaskB()">
+      <span class="btn-text">Get Recommendations</span>
+      <div class="spinner"></div>
+    </button>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Recommendations</div>
+    <div id="output-b">
+      <div class="output-placeholder">
+        <div class="icon">🗺️</div>
+        <p>Add user history and optional context, then click Get Recommendations</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>ÌMỌ̀ · Mercy Olamide Okebiorun · Caleb University MBA · DSN × BCT 2026</p>
+  <a href="https://github.com/kikibyt/dsn-bct-challenge" target="_blank">GitHub →</a>
+</footer>
+
+<script>
+  // ── CONFIG ──
+  const TASK_A_URL = 'https://dsn-bct-task-a.onrender.com';
+  const TASK_B_URL = 'https://dsn-bct-task-b.onrender.com';
+
+  // ── TAB SWITCHING ──
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // ── STAR RATING WIDGET ──
+  function createStarRating(id, defaultVal = 4) {
+    const wrap = document.createElement('div');
+    wrap.className = 'star-select';
+    wrap.dataset.rating = defaultVal;
+    for (let i = 1; i <= 5; i++) {
+      const s = document.createElement('span');
+      s.className = 'star' + (i <= defaultVal ? ' active' : '');
+      s.textContent = '★';
+      s.dataset.val = i;
+      s.onclick = () => {
+        wrap.dataset.rating = i;
+        wrap.querySelectorAll('.star').forEach((st, idx) => {
+          st.classList.toggle('active', idx < i);
+        });
+      };
+      wrap.appendChild(s);
+    }
+    return wrap;
+  }
+
+  // ── ADD REVIEW CARD ──
+  let cardCountA = 0;
+  let cardCountB = 0;
+
+  function addReviewCard(defaults = {}) {
+    cardCountA++;
+    const id = 'card-a-' + cardCountA;
+    const card = document.createElement('div');
+    card.className = 'review-card';
+    card.id = id;
+
+    const header = document.createElement('div');
+    header.className = 'review-card-header';
+
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.placeholder = 'Business name...';
+    nameInput.value = defaults.business || '';
+    nameInput.style.flex = '1';
+
+    const stars = createStarRating(id, defaults.rating || 4);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'remove-btn';
+    removeBtn.textContent = '×';
+    removeBtn.onclick = () => card.remove();
+
+    header.appendChild(nameInput);
+    header.appendChild(stars);
+    card.appendChild(header);
+    card.appendChild(removeBtn);
+
+    const reviewTA = document.createElement('textarea');
+    reviewTA.placeholder = 'What did they say?';
+    reviewTA.rows = 2;
+    reviewTA.value = defaults.review || '';
+    card.appendChild(reviewTA);
+
+    document.getElementById('review-cards-a').appendChild(card);
+  }
+
+  function addReviewCardB(defaults = {}) {
+    cardCountB++;
+    const id = 'card-b-' + cardCountB;
+    const card = document.createElement('div');
+    card.className = 'review-card';
+    card.id = id;
+
+    const header = document.createElement('div');
+    header.className = 'review-card-header';
+
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.placeholder = 'Business name...';
+    nameInput.value = defaults.business || '';
+    nameInput.style.flex = '1';
+
+    const stars = createStarRating(id, defaults.rating || 4);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'remove-btn';
+    removeBtn.textContent = '×';
+    removeBtn.onclick = () => card.remove();
+
+    header.appendChild(nameInput);
+    header.appendChild(stars);
+    card.appendChild(header);
+    card.appendChild(removeBtn);
+
+    const reviewTA = document.createElement('textarea');
+    reviewTA.placeholder = 'What did they say?';
+    reviewTA.rows = 2;
+    reviewTA.value = defaults.review || '';
+    card.appendChild(reviewTA);
+
+    document.getElementById('review-cards-b').appendChild(card);
+  }
+
+  // ── COLLECT HISTORY ──
+  function collectHistory(containerId) {
+    const cards = document.querySelectorAll(`#${containerId} .review-card`);
+    const history = [];
+    cards.forEach(card => {
+      const business = card.querySelector('input[type="text"]').value.trim();
+      const rating = parseInt(card.querySelector('.star-select').dataset.rating);
+      const review = card.querySelector('textarea').value.trim();
+      if (business && review) {
+        history.push({ business, rating, review });
+      }
+    });
+    return history;
+  }
+
+  // ── STARS DISPLAY ──
+  function starsHTML(n) {
+    return '★'.repeat(n) + '☆'.repeat(5 - n);
+  }
+
+  // ── RUN TASK A ──
+  async function runTaskA() {
+    const history = collectHistory('review-cards-a');
+    const name = document.getElementById('product-name').value.trim();
+    const category = document.getElementById('product-category').value.trim();
+    const desc = document.getElementById('product-desc').value.trim();
+
+    if (!history.length || !name) {
+      alert('Please add at least one review and fill in the product name.');
+      return;
+    }
+
+    const btn = document.getElementById('run-a');
+    btn.classList.add('loading');
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(`${TASK_A_URL}/simulate-review`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_history: history,
+          product: { name, category: category || 'Restaurant', description: desc || name }
+        })
+      });
+
+      if (!res.ok) throw new Error(`API error: ${res.status}`);
+      const data = await res.json();
+
+      document.getElementById('output-a').innerHTML = `
+        <div class="result-section">
+          <div class="persona-box">${data.user_persona_summary.replace(/\*\*/g, '').replace(/\#+ /g, '')}</div>
+          <div class="review-result">
+            <div class="rating-display">
+              <div class="rating-number">${data.simulated_rating}</div>
+              <div>
+                <div class="rating-stars">${starsHTML(data.simulated_rating)}</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Simulated Rating</div>
+              </div>
+            </div>
+            <div class="review-text">${data.simulated_review}</div>
+          </div>
+          <div style="font-size:11px;color:var(--muted);text-align:center;margin-top:12px;">
+            Review simulated for <strong>${data.product}</strong>
+          </div>
+        </div>
+      `;
+    } catch (err) {
+      document.getElementById('output-a').innerHTML = `
+        <div class="error-box">
+          <strong>Connection error</strong><br>
+          ${err.message}<br><br>
+          The API may be waking up (free tier). Wait 30 seconds and try again.
+        </div>
+      `;
+    } finally {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
+  }
+
+  // ── RUN TASK B ──
+  async function runTaskB() {
+    const history = collectHistory('review-cards-b');
+
+    if (!history.length) {
+      alert('Please add at least one review.');
+      return;
+    }
+
+    const context = {
+      occasion: document.getElementById('ctx-occasion').value.trim() || null,
+      location: document.getElementById('ctx-location').value.trim() || null,
+      budget: document.getElementById('ctx-budget').value.trim() || null,
+      mood: document.getElementById('ctx-mood').value.trim() || null,
+    };
+
+    const btn = document.getElementById('run-b');
+    btn.classList.add('loading');
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(`${TASK_B_URL}/recommend`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_history: history, context })
+      });
+
+      if (!res.ok) throw new Error(`API error: ${res.status}`);
+      const data = await res.json();
+
+      const recsHTML = data.recommendations.map((rec, i) => `
+        <div class="rec-card">
+          <div class="rec-rank">${i + 1}</div>
+          <div>
+            <div class="rec-name">${rec.name}</div>
+            <div class="rec-pitch">"${rec.pitch}"</div>
+            <div class="rec-why">${rec.why}</div>
+          </div>
+          <div class="confidence-badge">${rec.confidence}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('output-b').innerHTML = `
+        <div class="result-section">
+          <div class="persona-box">${data.user_persona.replace(/\*\*/g, '').replace(/\#+ /g, '')}</div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:12px;letter-spacing:1px;text-transform:uppercase;">
+            Top ${data.recommendations.length} recommendations — hover for reasoning
+          </div>
+          ${recsHTML}
+        </div>
+      `;
+    } catch (err) {
+      document.getElementById('output-b').innerHTML = `
+        <div class="error-box">
+          <strong>Connection error</strong><br>
+          ${err.message}<br><br>
+          The API may be waking up (free tier). Wait 30 seconds and try again.
+        </div>
+      `;
+    } finally {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
+  }
+
+  // ── SEED DEFAULT REVIEWS ──
+  window.onload = () => {
+    addReviewCard({
+      business: "Chicken Republic Lekki",
+      rating: 2,
+      review: "The chicken was dry and the service was so slow. Never again."
+    });
+    addReviewCard({
+      business: "Nkoyo Restaurant",
+      rating: 5,
+      review: "This place ehn! The ofe akwu was exactly like my mama used to make."
+    });
+    addReviewCard({
+      business: "Dominos VI",
+      rating: 3,
+      review: "Pizza was okay. Nothing special. They forgot my extra cheese."
+    });
+
+    addReviewCardB({
+      business: "Mama Cass Restaurant",
+      rating: 5,
+      review: "Best amala and ewedu in Lagos hands down. This place never disappoints."
+    });
+    addReviewCardB({
+      business: "KFC Ikeja City Mall",
+      rating: 2,
+      review: "Overpriced and the chicken was cold. Very disappointing."
+    });
+    addReviewCardB({
+      business: "Buka Stop Surulere",
+      rating: 4,
+      review: "Good local food, affordable and filling. Stew was rich and fresh."
+    });
+  };
+</script>
+</body>
+</html>
